@@ -1,0 +1,83 @@
+public class QueueTest {
+    private int maxSize;
+    private int[] queueArray;
+    private int rear;
+    private int front;
+
+    public QueueTest(int mxSize) {
+        this.rear = -1;
+        this.front = 0;
+        this.maxSize = mxSize;
+        this.queueArray = new int[mxSize];
+
+    }
+
+    public void enQueue(int value) {
+        if (rear == -1) {
+            rear = (rear + 1) % maxSize;
+            queueArray[rear] = value;
+            System.out.println("The Element is Added");
+        } else if ((rear + 1) % maxSize == front) {
+            System.out.println("The Queue is full");
+            return;
+        } else {
+            rear = (rear + 1) % maxSize;
+            queueArray[rear] = value;
+            System.out.println("The Element is Added");
+        }
+
+    }
+
+    public void deQueue() {
+        if (rear == -1) {
+            System.out.println("The Queue is Empty");
+            return;
+        }
+
+        int removeEle = queueArray[front];
+        front = (front + 1) % maxSize;
+        System.out.println("The element " + removeEle + " is Deleted");
+
+    }
+
+    public void Search(int value) {
+        if (rear == -1) {
+            System.out.println("The Queue is Empty");
+            return;
+        }
+
+        while (front != rear + 1) {
+            if (queueArray[front] == value) {
+                System.out.println("The element is found");
+                return;
+            }
+            front = (front + 1) % maxSize;
+            if (front == rear + 1) {
+                System.out.println("the Element is not found");
+            }
+
+        }
+
+    }
+
+    public void display() {
+        while (front != rear + 1) {
+            System.out.println(queueArray[front]+" ");
+            front = (front + 1) % maxSize;
+        }
+    }
+
+    public static void main(String[] args) {
+        QueueTest qt = new QueueTest(5);
+
+        qt.enQueue(12);
+        qt.enQueue(7);
+        qt.enQueue(5);
+        qt.enQueue(6);
+        qt.enQueue(25);
+
+        qt.deQueue();
+
+        qt.display();
+    }
+}
