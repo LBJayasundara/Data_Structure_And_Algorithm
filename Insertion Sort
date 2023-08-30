@@ -1,0 +1,48 @@
+public class InsertionSort{
+
+public static void insertionsort(int arr[])
+{
+
+    for(int i=1;i<arr.length;i++)
+    {
+        int key = arr[i];
+        int j=i-1;
+        while(j>-1 && arr[j]>key)
+        {
+            arr[j+1] = arr[j];
+      
+            j--; 
+	    
+            arr[j+1] = key;
+        }
+
+    }
+}
+
+public static void main(String [] args)
+{
+    int arr[] = {6,1,2,3,4,789,8};
+    insertionsort(arr);
+
+
+    for(int i=0;i<arr.length;i++)
+    {
+        System.out.println(arr[i]);
+    }
+}
+ 
+}
+
+/*we take a variable "key" to compare the elements before it
+
+j--:
+In the Insertion Sort algorithm, we use a variable j to keep track of the position of the element that is currently being compared to the key. The purpose of this variable is to move backward through the already sorted elements and find the correct position for the key.
+When we find an element that is greater than the key, we move this element one position to the right to make space for the key to be inserted. The j-- operation simply decrements the value of j to move it one position backward in the array.
+
+For example, if j is initially 3, then j-- will change its value to 2, effectively moving one position to the left in the array.
+
+arr[j+1] = key:
+This line is used to insert the key at its correct position in the sorted part of the array. After finding the correct position for the key, we need to place it in the array.
+When we exit the while loop, either because j becomes -1 (reached the beginning of the array) or because arr[j] is not greater than the key, we know that the correct position for the key is j + 1. This is because the loop decremented j one extra time before it exited, which moves j one position to the left of its correct position.
+
+So, arr[j + 1] = key means we are inserting the key at the position j + 1, which is its correct sorted position.*/
