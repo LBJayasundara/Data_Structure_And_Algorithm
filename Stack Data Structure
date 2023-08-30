@@ -1,0 +1,149 @@
+import java.util.Scanner;
+
+public class user_Stack {
+int[]stack;
+int top;
+
+    user_Stack(int size)
+    { 
+    
+        stack=new int[size];
+        top=-1;
+         
+
+    }
+
+   
+    public void push(int data){
+        if(isFull()){
+            System.out.println("Stack is full....");
+        }
+        else{
+            stack[++top] = data;
+            //System.out.println(data + " added to the stack");
+        }
+
+    }
+
+    public boolean isFull(){
+        return top == 4;         // top means the index of the last element in the array.
+                                 // this boolean method returns the top as 4.
+    }
+    public boolean isEmpty()
+    {
+       return top == -1;
+    }
+
+    public void pop()
+    {
+        if(top == -1)
+        {
+            System.out.println("Stack is empty");
+        }
+        else
+        {
+           stack[top] =0;
+           top--;      //--top is the same as --top
+        }
+    }
+
+    public void peek()
+    {
+           if(isEmpty())
+           {
+            System.out.println("The Stack is empty");
+           }
+           else{
+            System.out.print(" This peek method shows the element that was entered last ");
+            System.out.println(stack[top]);
+           }
+    }
+
+    public void display()
+    {
+        for(int i=0;i<stack.length;i++)
+        {
+           System.out.print(" " + stack[i]);
+        }
+        System.out.print("    ");
+    }
+
+    public static void main(String [] args)
+    {
+
+         Scanner sc = new Scanner(System.in);
+         System.out.println("Enter the size of the stack");
+         int size =sc.nextInt();
+         
+         user_Stack st =new user_Stack(size);
+
+
+         System.out.println("1. push");
+         System.out.println("2. pop");
+         System.out.println("3. peek");
+         System.out.println("4. display");
+       
+         int op =sc.nextInt();
+         int i=0;
+
+
+    
+          if(op == 1)
+         {
+           System.out.println("Enter the number that you want in the stack");
+           int a =sc.nextInt();
+
+           st.push(a);
+         } 
+
+         else if(op == 2)
+         {
+           System.out.println("Enter the number that you want to delete from the stack");
+           int b =sc.nextInt();
+
+           st.pop();
+
+        
+         } 
+
+
+         else if(op == 3)
+         {
+           System.out.println("See the element that was inserted into the stack last");
+           int c =sc.nextInt();
+
+           st.peek();
+
+        
+         } 
+
+         else if(op == 4)
+         {
+           System.out.println("display the numbers.......");
+           int b =sc.nextInt();
+
+           st.display();
+
+        
+         } 
+
+      
+
+/*
+
+         st.display();
+
+         st.push(10);
+         st.push(16);
+         st.push(17);
+         st.push(18);
+         st.push(19);
+         
+         st.display();    
+         st.pop();
+         st.display(); 
+         st.push(47);
+         st.display(); 
+         st.peek(); */
+    }
+}
