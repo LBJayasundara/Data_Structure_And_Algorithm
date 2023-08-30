@@ -1,0 +1,93 @@
+public class a1 {
+
+    public static void insert(int arr[],int val,int pos)
+    {
+        if(pos< arr.length && pos> 0) {
+        for (int i=arr.length-1;i>pos;i--)
+        {
+            arr[i]=arr[i-1];
+        }
+        arr[pos]=val;
+        }
+    }
+
+    public static void search(int arr[],int val)
+    {
+        int key=1;
+        for (int i=0;i< arr.length-1;i++)
+        {
+            if (arr[i] == val)
+            {
+                System.out.println("Value is found in index"+i);
+                key=1;
+                break;
+
+            }else
+            {
+                key=0;
+            }
+        }
+
+        if (key==0)
+        {
+            System.out.println("Value is not found in the list");
+        }
+    }
+
+    public static void delete(int arr[],int val)
+    {
+
+        int key=1;
+        for (int i=0;i< arr.length;i++)
+        {
+            if (arr[i] == val)
+            {
+                System.out.println("Value is found in index"+i);
+
+                for (int j=i;j<arr.length-1;j++)
+                {
+                    arr[j]=arr[i+1];
+                }
+                arr[arr.length-1]=0;
+                key=1;
+                break;
+
+            }else
+            {
+                key=0;
+            }
+        }
+
+        if (key==0)
+        {
+            System.out.println("Value is not found in the list to delete");
+        }
+    }
+
+
+
+    public static void display(int arr[])
+    {
+        for (int i=0;i<arr.length;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+
+
+    public static void main(String[] args) {
+
+        int arr[]={103,101,74,107,84,87,109,67,11,113};
+
+        search(arr,84);
+        insert(arr,105,4);
+        display(arr);
+        delete(arr,109);
+        display(arr);
+
+
+
+
+    }
+
+}
